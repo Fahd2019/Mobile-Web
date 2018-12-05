@@ -1,0 +1,41 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 40%;
+    border-radius: 5px;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+    padding: 2px 16px;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+	<h2>List of Meals Available</h2>
+
+	<p><a href="/orders/create" class="placeOrder">Create Meal Record</a></p>
+
+	<% if (orders && orders.length) { %>
+	  <% orders.forEach((item) => { %>
+	  <% var link = "/orders/" + item._id; %>
+	  <div class="card">
+		<div class="container">
+		  <h4>Meal name: <a href=<%= link %> ><%= item.name %></a></h4>
+		  <p><b>Meal items:</b> <%= item.items %></p>
+		  <p><b>Meal price:</b> <%= item.price %></p>
+		  <p><b>Meal quantity:</b> <%= item.quantity %></p>
+      <button class="delete"><a href=<%= link + "/delete" %>>Delete</a></button><br /><br /><br />
+		</div>
+	  </div>
+	  <% }) %>
+	<% } %>
+
+</body>

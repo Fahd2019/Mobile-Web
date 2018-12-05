@@ -1,0 +1,36 @@
+<html><head><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script></head><body>
+
+<h2>Delete Meal</h2><br />
+
+<% var link = "/orders/" + data._id; %>
+
+<form method="DELETE" action=<%= link %> id="my_form">
+    Meal Name: <b><%= data.name %></b><br /><br />
+    Meal Items: <b><%= data.items %></b><br /><br />
+    Meal Quantity: <b><%= data.quantity %></b><br /><br />
+    Meal Price: <b><%= data.price %></b><br /><br />
+    <input type="submit">
+</form>
+
+<h2><a href="/orders">View Meals List</a></h2>
+
+<script type="text/javascript">
+  $("#my_form").submit(function(event){
+  	event.preventDefault(); //prevent default action
+  	var post_url = $(this).attr("action"); //get form action url
+  	var request_method = $(this).attr("method"); //get form GET/POST method
+  	var form_data = $(this).serialize(); //Encode form elements for submission
+
+  	$.ajax({
+  		url : post_url,
+  		type: request_method,
+  		data : form_data
+  	}).done(function(response){ //
+  		$("#server-results").html(response);
+      console.log(response);
+      alert("Delete Successful");
+  	});
+  });
+</script>
+
+</body></html>
