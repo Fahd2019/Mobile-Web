@@ -62,12 +62,7 @@ exports.login = function(req, res) {
             console.log(err);
             return res.send({message: getErrorMessage(err)});
         }
-        else if(!user) {
-            return res.send({message: "The username or email address you've entered doesn't match any account"});
-        }
-        else if (user.authenticate(password)) {
-            return res.redirect("/orders/create");
-        } else return res.status(401).send({message: "Incorrect username and password combination!"});
+        return res.send("success")
     });
 };
 
