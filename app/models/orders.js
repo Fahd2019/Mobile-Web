@@ -2,19 +2,15 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var OrderSchema = new Schema({
-    name: {
+    title: {
       type: String,
       required: true
     },
-    items: {
+    description: {
       type: String,
       required: true
     },
-    quantity: {
-      type: String,
-      required: true
-    },
-    price: {
+    table: {
       type: String,
       required: true
     }
