@@ -62,7 +62,7 @@ exports.login = function(req, res) {
             console.log(err);
             return res.send({message: getErrorMessage(err)});
         }
-        return res.send("success")
+        return res.send(user)
     });
 };
 
