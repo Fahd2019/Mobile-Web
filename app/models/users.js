@@ -9,7 +9,7 @@ let UserSchema = new Schema({
     },
     role: {
       type: String,
-      required: "client"
+      required: true
     },
     email: {
       type: String,
