@@ -44,7 +44,7 @@ exports.list = function(req, res) {
             return res.status(400).send({
                 message: getErrorMessage(err)
             });
-        } else res.render('list', {orders: info});
+        } else res.send({success:true, orders: info});
     });
 };
 
